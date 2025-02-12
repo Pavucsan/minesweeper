@@ -34,4 +34,9 @@ public class Cell {
     public void setAdjacentMines(int adjacentMines) {
         this.adjacentMines = adjacentMines;
     }
+
+    @Override
+    public String toString() {
+        return isRevealed ? (isMine ? "*" : String.valueOf(adjacentMines)) : "_";
+    }
 }

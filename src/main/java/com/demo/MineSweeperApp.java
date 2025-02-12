@@ -1,5 +1,7 @@
 package com.demo;
 
+import com.demo.service.GamePlay;
+
 import java.util.Scanner;
 
 public class MineSweeperApp {
@@ -19,5 +21,7 @@ public class MineSweeperApp {
             }
         } while (mines > maximumMines);
 
+        GamePlay gamePlay = new GamePlay(gridSize, mines);
+        gamePlay.play();
     }
 }
