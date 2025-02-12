@@ -5,7 +5,7 @@ public class Cell {
     private boolean isRevealed;
     private int adjacentMines;
 
-    public Cell() {
+    public Cell(){
         this.isMine = false;
         this.isRevealed = false;
         this.adjacentMines = 0;
