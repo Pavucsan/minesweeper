@@ -77,6 +77,10 @@ public class GridBoard {
         }
         grid[row][col].setRevealed(true);
 
+        if (grid[row][col].isMine()) {
+            return true; // Game over if mine is revealed
+        }
+
         if (grid[row][col].getAdjacentMines() == 0) {
             for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
                 for (int colOffset = -1; colOffset <= 1; colOffset++) {
