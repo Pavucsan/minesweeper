@@ -30,7 +30,13 @@ public class GamePlay {
 
             int row, col;
             row = input.charAt(0) - 'A';
-            col = Integer.parseInt(String.valueOf(input.charAt(1))) - 1;
+            try {
+                col = Integer.parseInt(String.valueOf(input.charAt(1))) - 1;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a letter followed by a number (e.g., A1).");
+                continue;
+            }
+
             if ((row >= 0 && row < size) && (col >= 0 && col < size)) {
                 gameEnd = gridBoard.revealCell(row, col);
                 revealedCount++;

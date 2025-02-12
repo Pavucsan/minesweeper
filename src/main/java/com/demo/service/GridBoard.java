@@ -16,7 +16,7 @@ public class GridBoard {
         this.grid = new Cell[gridSize][gridSize];
         initGridBoard();
         putMines();
-
+        numbersCalculate();
     }
 
     private void initGridBoard() {
@@ -47,11 +47,11 @@ public class GridBoard {
 
     private int countAdjacentMines(int row, int col) {
         int mineCount = 0;
-        for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
-            for (int colOffset = -1; colOffset <= 1; colOffset++) {
-                int nrow = row + rowOffset;
-                int ncol = col + colOffset;
-                if ((nrow >= 0 && nrow < gridSize) && (ncol >= 0 && ncol < gridSize) && grid[nrow][ncol].isMine()) {
+        for (int dr = -1; dr <= 1; dr++) {
+            for (int dc = -1; dc <= 1; dc++) {
+                int nr = row + dr;
+                int nc = col + dc;
+                if (nr >= 0 && nr < gridSize && nc >= 0 && nc < gridSize && grid[nr][nc].isMine()) {
                     mineCount++;
                 }
             }
@@ -72,7 +72,7 @@ public class GridBoard {
 
 
     public boolean revealCell(int row, int col) {
-        if (row < 0 || row > gridSize || col < 0 || col > gridSize || grid[row][col].isRevealed()) {
+        if (row < 0 || row >= gridSize || col < 0 || col >= gridSize || grid[row][col].isRevealed()) {
             return false;
         }
         grid[row][col].setRevealed(true);
@@ -80,7 +80,7 @@ public class GridBoard {
         if (grid[row][col].getAdjacentMines() == 0) {
             for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
                 for (int colOffset = -1; colOffset <= 1; colOffset++) {
-                    if (rowOffset != 0 && colOffset != 0) {
+                    if (rowOffset != 0 || colOffset != 0) {
                         revealCell(row + rowOffset, col + colOffset);
                     }
                 }
