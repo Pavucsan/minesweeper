@@ -70,6 +70,29 @@ public class GridBoard {
         }
     }
 
+
+    public boolean revealCell(int row, int col) {
+        if (row < 0 || row > gridSize || col < 0 || col > gridSize || grid[row][col].isRevealed()) {
+            return false;
+        }
+        grid[row][col].setRevealed(true);
+
+        if (grid[row][col].getAdjacentMines() == 0) {
+            for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
+                for (int colOffset = -1; colOffset <= 1; colOffset++) {
+                    if (rowOffset != 0 && colOffset != 0) {
+                        revealCell(row + rowOffset, col + colOffset);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean isMatchWin(int reveledCount) {
+        return reveledCount == (gridSize * gridSize - mines);
+    }
+
     public void printGridBoard(boolean revealMines) {
         System.out.println("  ");
         for (int i = 0; i < gridSize; i++) {
