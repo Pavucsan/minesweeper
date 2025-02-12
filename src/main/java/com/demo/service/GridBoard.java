@@ -96,17 +96,17 @@ public class GridBoard {
     public void printGridBoard(boolean revealMines) {
         System.out.println("  ");
         for (int i = 0; i < gridSize; i++) {
-            System.out.println((i + 1) + " ");
+            System.out.print((i + 1) + " ");
         }
         System.out.println();
 
         for (int row = 0; row < gridSize; row++) {
-            System.out.println(('A' + row) + " ");
+            System.out.print((char) ('A' + row) + " ");
             for (int col = 0; col < gridSize; col++) {
                 if (revealMines && grid[row][col].isMine()) {
-                    System.out.println("* ");
+                    System.out.print("* ");
                 } else {
-                    System.out.println(grid[row][col] + " ");
+                    System.out.print(grid[row][col] + " ");
                 }
             }
             System.out.println();
