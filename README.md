@@ -1,5 +1,5 @@
 # Minesweeper Game - README
-minesweeper game for an assignment
+Minesweeper game for an assignment
 
 ## Design:
 
