@@ -105,4 +105,34 @@ public class GamePlayTest {
             }
         }
     }
+
+
+    @Test
+    void testGamePlayEndToEndWin() {
+        GridBoard board = gamePlay.getBoard();
+        int revealedCount = 0;
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (!board.getCell(row, col).isMine()) {
+                    board.revealCell(row, col);
+                    revealedCount++;
+                }
+            }
+        }
+        assertTrue(gamePlay.getBoard().isMatchWin(revealedCount), "End-to-end: Game should be won when all non-mine cells are revealed.");
+    }
+
+    @Test
+    void testGamePlayEndToEndLose() {
+        GridBoard board = gamePlay.getBoard();
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (board.getCell(row, col).isMine()) {
+                    boolean isMineHit = board.revealCell(row, col);
+                    assertTrue(isMineHit, "End-to-end: Revealing a mine should end the game.");
+                    return;
+                }
+            }
+        }
+    }
 }
