@@ -17,6 +17,10 @@ public class GamePlay {
         this.revealedCount = 0;
     }
 
+    public GridBoard getBoard() {
+        return this.gridBoard;
+    }
+
 
     public void play() {
         Scanner scanner = new Scanner(System.in);

@@ -19,6 +19,11 @@ public class GridBoard {
         numbersCalculate();
     }
 
+    // for testing
+    public Cell getCell(int row, int col) {
+        return grid[row][col];
+    }
+
     private void initGridBoard() {
         for (int i = 0; i < gridSize; i++) {
             for (int j = 0; j < gridSize; j++) {
