@@ -1,5 +1,7 @@
 # Minesweeper Game - README
-Minesweeper game for an assignment
+This Minesweeper game is a console-based Java computer program that tests  the classic Minesweeper game.
+The user is prompted to input the grid size and number of mines, after which they can reveal  about cells on the board by providing coordinates.
+The game will end when either the player uncovers a mine (game over) or all non-mine cells are revealed (win).
 
 ## Design:
 
@@ -9,6 +11,10 @@ Minesweeper game for an assignment
 3. **Game Play**: Manages the gameplay, including the user's input, the game loop, checking for win conditions, and printing the game board.
 4. **MinesweeperApp**: The main entry point of the application. It handles input validation for the grid size and number of mines, initiates the game, and processes user commands.
 
+### Assumptions:
+- The game board is a square grid, and the size is a positive integer greater than 0.
+- The number of mines is a positive integer and does not exceed 35% of the total grid size.
+- The grid size can vary, but it should be practical for standard console-based interaction.
 
 ### Game Flow:
 1. **User Input**:
@@ -23,15 +29,19 @@ Minesweeper game for an assignment
 3. **Input Validation**:
     - The application performs checks for valid inputs, such as checking for non-negative integers, range restrictions, and correct format for coordinates.
 
-## Environment Requirements:
+## Environment Requirements (Windows):
 - **Java Development Kit (JDK)**:
     - Java 17
 
-  **To check if Java is installed:**
+- **To check if Java is installed:**
     - Open your terminal/command prompt and run:
       ```bash
       java -version
       ```
+- **Setup Java Environment**:
+  If Java is not installed, download and install it from the official [Oracle JDK website](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or use [OpenJDK](https://adoptopenjdk.net/).
+
+
 ## Steps to Run Test:
 1. **Run Test**:
     - Go to specific dir and open the terminal, run the following command in your terminal:
