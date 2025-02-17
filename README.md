@@ -39,7 +39,7 @@ The game will end when either the player uncovers a mine (game over) or all non-
       java -version
       ```
 - **Setup Java Environment**:
-  If Java is not installed, download and install it from the official [Oracle JDK website](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or use [OpenJDK](https://adoptopenjdk.net/).
+  If Java 17 is not installed, download and install it from the official [Oracle JDK website](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or use [OpenJDK](https://adoptopenjdk.net/).
 
 
 ## Steps to Run Test:
