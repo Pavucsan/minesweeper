@@ -75,27 +75,32 @@ public class GridBoard {
         }
     }
 
-
     public boolean revealCell(int row, int col) {
-        if (row < 0 || row >= gridSize || col < 0 || col >= gridSize || grid[row][col].isRevealed()) {
+        if (!isValidCell(row, col) || grid[row][col].isRevealed()) {
             return false;
         }
         grid[row][col].setRevealed(true);
 
         if (grid[row][col].isMine()) {
-            return true; // Game over if mine is revealed
+            return true; // when game over
         }
 
         if (grid[row][col].getAdjacentMines() == 0) {
             for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
                 for (int colOffset = -1; colOffset <= 1; colOffset++) {
-                    if (rowOffset != 0 || colOffset != 0) {
-                        revealCell(row + rowOffset, col + colOffset);
+                    if ((rowOffset != 0 || colOffset != 0) && isValidCell(row + rowOffset, col + colOffset)) {
+                        if (!grid[row + rowOffset][col + colOffset].isRevealed()) {
+                            revealCell(row + rowOffset, col + colOffset);
+                        }
                     }
                 }
             }
         }
         return false;
+    }
+
+    public boolean isValidCell(int row, int col) {
+        return row >= 0 && row < gridSize && col >= 0 && col < gridSize;
     }
 
     public boolean isMatchWin(int reveledCount) {

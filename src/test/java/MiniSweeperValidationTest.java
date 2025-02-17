@@ -45,4 +45,35 @@ public class MiniSweeperValidationTest {
         assertEquals(3, gridSize);
     }
 
+    @Test
+    void testValidMineCount() {
+        String input = "5\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(in);
+
+        int mines = MineSweeperValidation.getValidMineCount(scanner, 10);
+        assertEquals(5, mines);
+    }
+
+    @Test
+    void testInvalidMineCountThenValid() {
+        String input = "-2\n0\n8\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(in);
+
+        int mines = MineSweeperValidation.getValidMineCount(scanner, 10);
+        assertEquals(8, mines);
+    }
+
+    @Test
+    void testMineCountExceedingMax() {
+        String input = "20\n7\n";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        Scanner scanner = new Scanner(in);
+
+        int mines = MineSweeperValidation.getValidMineCount(scanner, 10);
+        assertEquals(7, mines);
+    }
+
+
 }

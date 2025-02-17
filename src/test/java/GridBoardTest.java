@@ -2,8 +2,7 @@ import com.demo.service.GridBoard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GridBoardTest {
     private GridBoard board;
@@ -36,6 +35,16 @@ public class GridBoardTest {
             }
         }
         assertEquals(mines, mineCount, "Mine count should match the expected number");
+    }
+
+    @Test
+    void testIsValidCell() {
+        GridBoard board = new GridBoard(5, 3); //5X5
+        assertTrue(board.isValidCell(0, 0));
+        assertTrue(board.isValidCell(4, 4));
+        assertTrue(board.isValidCell(2, 3));
+        assertFalse(board.isValidCell(-1, 0));
+        assertFalse(board.isValidCell(0, 5));
     }
 
 }
